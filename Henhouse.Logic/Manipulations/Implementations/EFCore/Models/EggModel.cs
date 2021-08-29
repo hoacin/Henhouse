@@ -11,6 +11,16 @@ namespace Henhouse.Logic.Manipulations.Implementations.EFCore.Models
         public bool IsWhite { get; set; }
         public DateTime CreationTime { get; set; }
 
-        public Egg ToEgg() => new(ChickenName!, WeightInGrams, IsWhite, CreationTime);
+        public EggModel(string chickenName, int weightInGrams, bool isWhite, DateTime creationTime)
+        {
+            ChickenName = chickenName;
+            WeightInGrams = weightInGrams;
+            IsWhite = isWhite;
+            CreationTime = creationTime;
+        }
+        public EggModel()
+        {
+        }
+        public Egg ToEgg() => new(ChickenName, WeightInGrams, IsWhite, CreationTime);
     }
 }

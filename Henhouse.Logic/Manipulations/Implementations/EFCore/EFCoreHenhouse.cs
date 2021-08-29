@@ -1,9 +1,7 @@
 ﻿using Henhouse.Logic.Animals;
-using Henhouse.Logic.Manipulations.Implementations.EFCore.Models;
 using Henhouse.Logic.Products;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace Henhouse.Logic.Manipulations.Implementations.EFCore
@@ -16,41 +14,16 @@ namespace Henhouse.Logic.Manipulations.Implementations.EFCore
         {
             _dbContext = new HenhouseDBContext(connectionsString);
         }
-        public async Task<bool> AddChickenAsync(string chickenName, string category)
-        {
-            if (_dbContext.Chickens!.Any(chicken => chicken.Name == chickenName))
-                return false;
-            _ = _dbContext.Chickens!.Add(new ChickenModel(chickenName, category));
-            _ = await _dbContext.SaveChangesAsync();
-            return true;
-        }
 
+        //Chickens
+        public Task<bool> AddChickenAsync(string chickenName, string category) => ChickenAdding.RunAsync(_dbContext, chickenName, category);
+        public Task<IEnumerable<Chicken>> GetAllChickensAsync() => ChickensGetter.RunAsync(_dbContext);
+        public Task<string> GetChickenCategoryAsync(string chickenName) => ChickenCategory.RunAsync(_dbContext, chickenName);
+        public Task<bool> RemoveChickenAsync(string chickenName) => ChickenRemoving.RunAsync(_dbContext, chickenName);
+        //Eggs
+        public Task<IEnumerable<Egg>> GetAllEggsAsync(string chickenName) => EggsGetter.RunAsync(_dbContext, chickenName);
         public Task<bool> AddEggAsync(string chickenName, int weightInGrams, bool isWhite, DateTime creationTime)
-        {
-            throw new NotImplementedException();
-        }
+            => EggAdding.RunAsync(_dbContext, chickenName, weightInGrams, isWhite, creationTime);
 
-        public Task<IEnumerable<Chicken>> GetAllChickensAsync()
-        {
-            List<Chicken> chickens = new();
-            foreach (var chicken in _dbContext.Chickens!)
-                chickens.Add(new Chicken(chicken.Name!, chicken.Category!));
-            return Task.FromResult<IEnumerable<Chicken>>(chickens.ToArray());
-        }
-
-        public Task<IEnumerable<Egg>> GetAllEggsAsync(string chickenName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<string> GetChickenCategoryAsync(string chickenName)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<bool> RemoveChickenAsync(string chickenName)
-        {
-            throw new NotImplementedException();
-        }
     }
 }
