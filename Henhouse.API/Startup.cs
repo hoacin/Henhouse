@@ -35,11 +35,14 @@ namespace Henhouse.API
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
-            {
                 _ = app.UseDeveloperExceptionPage();
-                _ = app.UseSwagger();
-                _ = app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Henhouse.API v1"));
-            }
+
+            _ = app.UseSwagger();
+            _ = app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Henhouse.API v1");
+                c.RoutePrefix = "";
+            });
             _ = app.UseHttpsRedirection();
             _ = app.UseRouting();
             _ = app.UseAuthorization();

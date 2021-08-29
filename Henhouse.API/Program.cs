@@ -1,5 +1,8 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
+using Azure.Identity;
+using Microsoft.Extensions.Configuration;
+using System;
 
 namespace Henhouse.API
 {
@@ -13,13 +16,18 @@ namespace Henhouse.API
         public static IHostBuilder CreateHostBuilder(string[] args)
         {
             return Host.CreateDefaultBuilder(args)
-                            .ConfigureLogging(logging =>
-                            {
-                            })
-                            .ConfigureWebHostDefaults(webBuilder =>
-                            {
-                                _ = webBuilder.UseStartup<Startup>();
-                            });
+                .ConfigureAppConfiguration((context, config) =>
+                {
+                    /*if (context.HostingEnvironment.IsProduction())
+                    {
+                        var keyVaultEndpoint = new Uri(Environment.GetEnvironmentVariable("HenhouseUri")!);
+                        _ = config.AddAzureKeyVault(keyVaultEndpoint, new DefaultAzureCredential());
+                    }*/
+                })
+                .ConfigureWebHostDefaults(webBuilder =>
+                {
+                    _ = webBuilder.UseStartup<Startup>();
+                });
         }
     }
 }
