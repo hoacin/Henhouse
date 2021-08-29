@@ -5,4 +5,4 @@
 
 using System.Diagnostics.CodeAnalysis;
 
-[assembly: SuppressMessage("Style", "IDE0058:Expression value is never used",Scope = "namespaceanddescendants", Target = "~N:Henhouse.Logic.Migrations")]
+[assembly: SuppressMessage("Style", "IDE0058:Expression value is never used", Scope = "namespaceanddescendants", Target = "~N:Henhouse.Logic.Migrations")]

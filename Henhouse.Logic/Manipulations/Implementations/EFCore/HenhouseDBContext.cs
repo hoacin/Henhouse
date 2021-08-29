@@ -1,13 +1,5 @@
-﻿using Henhouse.Logic.Animals;
-using Henhouse.Logic.Manipulations.Implementations.EFCore.Models;
+﻿using Henhouse.Logic.Manipulations.Implementations.EFCore.Models;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.IdentityModel.Protocols;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Henhouse.Logic.Manipulations.Implementations.EFCore
 {

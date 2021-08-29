@@ -1,9 +1,4 @@
 ﻿using Henhouse.Logic.Animals;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Henhouse.Logic.Manipulations.Implementations.EFCore.Models
 {

@@ -1,13 +1,10 @@
 ﻿using Henhouse.Logic.Animals;
 using Henhouse.Logic.Products;
-using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Henhouse.Logic.Manipulations.Implementations.InMemory
+namespace Henhouse.Logic.Manipulations.Implementations.Mock
 {
     public class MockHenhouse : IHenhouse
     {
