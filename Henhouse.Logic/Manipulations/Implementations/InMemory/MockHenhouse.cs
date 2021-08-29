@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Henhouse.Logic.Manipulations.Implementations.InMemory
 {
-    public class InMemoryHenhouse : IHenhouse
+    public class MockHenhouse : IHenhouse
     {
         private readonly List<Chicken> _chickens = new();
         private readonly List<Egg> _eggs = new();
